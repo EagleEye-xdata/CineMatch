@@ -1,96 +1,158 @@
-🎬 Movie Recommendation System – Detailed Project Summary
+# 🎬 CineMatch: AI-Powered Movie Recommendation System
 
-📌 Project Objective:
+[![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://python.org)
+[![Streamlit App](https://img.shields.io/badge/Streamlit-1.35%2B-FF4B4B.svg)](https://streamlit.io)
+[![ML Framework](https://img.shields.io/badge/Scikit--Learn-1.3%2B-F7931E.svg)](https://scikit-learn.org)
 
-The goal of this project was to create a content-based recommendation system that suggests similar movies to users based on the textual descriptions (movie overviews). Instead of relying on user ratings or watch history, this system finds recommendations by comparing the content of the movies themselves.
+An advanced, multi-page, content-based movie recommendation system built using Machine Learning and NLP. It processes textual metadata (genres, keywords, taglines, cast, directors) using TF-IDF vectorization and Cosine Similarity, offering a premium interactive web experience complete with real-time explainability, advanced analytics, and persistent user rating profiles.
 
-🧾 Dataset:
+---
 
-The project uses a dataset containing metadata of movies, including:
+## 📌 Project Objective
 
-Title
+The goal of CineMatch is to solve the **cold-start problem** in recommender systems. Instead of requiring historical user watch patterns or collaborative ratings, CineMatch leverages Natural Language Processing (NLP) to extract deep textual similarities directly from movie metadata. The application is designed to be highly interactive, transparent (Explainable AI), and visually stunning, matching industry-standard production applications.
 
-Overview (plot description)
+---
 
-Genre, Tags, and more
+## 🚀 Key Features
 
-This metadata allows us to analyze and compare movie plots using natural language processing (NLP).
+* 🔍 **Smart Content Search & Autocomplete**: Uses fuzzy string matching (`difflib`) to allow searching for movies with typos or incomplete titles.
+* 🧠 **Explainable AI (XAI)**: Shows *why* a movie was recommended by visualizing overlapping metadata tags and text feature vector weights.
+* 🎛️ **Hybrid Multi-Filters**: Refine recommendations by genres, minimum runtime, popularity range, and specific keywords.
+* 📊 **Dynamic Data Analytics Dashboard**:
+  * Distribution of movie popularity vs. average votes.
+  * Runtime distribution histograms.
+  * Interactive breakdown of the most popular genres.
+  * Dataset summary statistics.
+* 💾 **Persistent User Profiles & Ratings**: Rate movies directly in the app. Ratings are saved locally in a structured CSV file, dynamically updating your personalized recommended history.
+* 🎨 **Premium Aesthetic**: Responsive sidebar, custom glassmorphism design, custom CSS styles, and responsive cards with detailed popovers.
 
-🧠 Approach & Methodology:
+---
 
-1. Data Preprocessing:
+## 🛠️ Tech Stack & Architecture
 
-Handled null values: Overviews with missing data were filled with empty strings.
+CineMatch is built as a highly modular, scalable, multi-page web application.
 
-Lowercased the text: For consistency.
+```text
+┌───────────────────────────────────────────────────────────┐
+│                    Streamlit Frontend                     │
+│    (app.py, page1: Recommendations, page2: Analytics,     │
+│                   page3: User Ratings)                    │
+└─────────────┬───────────────────────────────▲─────────────┘
+              │ User Interactions             │ Rendered Data/Charts
+              ▼                               │
+┌─────────────────────────────────────────────┴─────────────┐
+│                    Recommendation Core                    │
+│      (Engine, Filters, Search, Explainability Module)      │
+└─────────────┬───────────────────────────────▲─────────────┘
+              │ Load Metadata / Tokenize      │ TF-IDF & Cosine Similarity
+              ▼                               │
+┌─────────────────────────────────────────────┴─────────────┐
+│                       Data Layer                          │
+│     (Pandas Loader, Local CSV Database: user_ratings.csv) │
+└───────────────────────────────────────────────────────────┘
+```
 
-Removed stopwords & punctuation: Using NLTK to reduce noise.
+* **Frontend**: [Streamlit](https://streamlit.io/) (Multi-page App Structure)
+* **Design & Styling**: Custom CSS stylesheets, Google Fonts (Outfit, Inter)
+* **Natural Language Processing**: `TfidfVectorizer` (scikit-learn), text tokenization and metadata combination
+* **Similarity Computation**: `cosine_similarity` (scikit-learn), NumPy matrix operations
+* **Data Engineering**: Pandas, NumPy
+* **Analytics & Visualizations**: Matplotlib, Seaborn, Streamlit native interactive charts
 
-Tokenization & Stemming: Reduced words to their root form using the Porter Stemmer (e.g., "running", "runs", "ran" → "run") to normalize different word forms.
+---
 
-2. Feature Extraction:
+## 📂 Project Structure
 
-Used CountVectorizer from scikit-learn to convert movie overviews into a bag-of-words (BoW) matrix.
+```text
+Movie_Recommendation_System_Streamlit/
+├── app.py                      # Main landing page & application entrypoint
+├── requirements.txt            # Python dependencies
+├── README.md                   # Comprehensive project documentation
+├── SETUP.md                    # Setup guide
+├── movies.csv                  # Core movie dataset (20,000+ movies)
+├── Movie_Recommendation_System.ipynb # Original research/prototyping notebook
+├── recommendation/             # Recommendation logic package
+│   ├── __init__.py
+│   ├── engine.py               # TF-IDF & Cosine Similarity computation
+│   ├── search.py               # Fuzzy name matching and search utils
+│   ├── filters.py              # Metadata genre/runtime/popularity filtering
+│   ├── hybrid.py               # Hybrid scoring logic (popularity + similarity)
+│   └── explainability.py       # XAI term overlap & explanation generator
+├── utils/                      # Helper & backend utility package
+│   ├── __init__.py
+│   ├── data_loader.py          # Cached data loading & prep
+│   ├── helpers.py              # Text formatting and display UI helpers
+│   ├── metrics.py              # Recommendation score and math metrics
+│   └── ratings_store.py        # Persistent user CSV reader/writer
+├── pages/                      # Streamlit multi-page directory
+│   ├── 1_Recommendations.py    # Main movie search & matching interface
+│   ├── 2_Analytics.py          # Interactive dataset analytics dashboards
+│   └── 3_User_Ratings.py       # Dynamic rating system & personalized history
+├── assets/                     # Frontend static assets
+│   ├── css/
+│   │   └── style.css           # Premium dark-theme & glassmorphism stylesheet
+│   └── placeholders/           # Static local placeholder assets
+└── data/
+    └── user_ratings.csv        # Local DB storing persistent user ratings
+```
 
-This matrix represents each movie as a vector of word frequencies.
+---
 
-Only top words (by frequency) are considered to reduce dimensionality.
+## ⚙️ Installation & Setup
 
-3. Similarity Calculation:
+### Prerequisites
+* Python 3.8 or higher installed on your computer.
 
-Calculated Cosine Similarity between all pairs of movie vectors.
+### Step-by-Step Installation
 
-This technique finds the angle between two vectors, indicating how close their content is.
+1. **Clone your repository**:
+   ```bash
+   git clone https://github.com/EagleEye-xdata/Movie_Recommendation_System_Streamlit.git
+   cd Movie_Recommendation_System_Streamlit
+   ```
 
-Movies with higher cosine similarity values are more alike in terms of plot.
+2. **Install all required dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-4. Recommendation Logic:
+3. **Run the Streamlit web application**:
+   ```bash
+   streamlit run app.py
+   ```
 
-When a user inputs a movie title, the system:
+4. **Access the application**:
+   Open your browser and navigate to `http://localhost:8501`.
 
-Fetches the index of that movie.
+---
 
-Calculates similarity scores between that movie and every other movie in the dataset.
+## 🎙️ Loom Presentation & Live Demo Script
 
-Sorts the scores in descending order.
+To make submitting your project as easy as possible, use this structured script to record your **Loom Video**:
 
-Returns the top 5 most similar movies as recommendations.
+### Section 1: Self-Introduction (30 Seconds)
+> *"Hello, my name is [Your Name], and I am presenting **CineMatch**, an AI-powered content-based Movie Recommendation System. Today, I'll walk you through the problem statement, our machine learning approach, the technical architecture, and a live demonstration of the multi-page application."*
 
-🛠️ Libraries Used & Their Roles:
+### Section 2: Problem Statement & ML Methodology (1 Minute)
+> *"Standard recommendation engines face the cold-start problem where new users or fresh movies have no watch history to make collaborative recommendations. CineMatch solves this by using NLP.*
+>
+> *We combine key metadata features—such as genres, keywords, taglines, cast, and directors—into a unified textual profile for each movie. We tokenize this using a TF-IDF vectorizer to extract word importance, then compute a **Cosine Similarity Matrix** across all movies. When a movie is selected, we retrieve the top most similar vectors, providing robust, content-based recommendations instantly."*
 
-Library	                      Purpose
+### Section 3: Live Application Demo (1.5 Minutes)
+1. **Landing Page**:
+   > *"Here is our main dashboard. We have integrated custom glassmorphic styling, responsive sidebars, and clean navigation."*
+2. **Recommendations Tab**:
+   > *"Under the Recommendations tab, you can search for any movie. If we search for 'The Dark Knight', the fuzzy search handles any typos. The app displays the top recommendations. We also have an **Explainable AI** popup that shows exactly which terms (like 'superhero', 'batman', 'director: christopher nolan') led to this recommendation."*
+3. **Analytics Tab**:
+   > *"On our Analytics page, we provide deep insights into the dataset: genre distributions, popularity vs. ratings, and average runtimes, showing how our dataset is structured."*
+4. **User Ratings Tab**:
+   > *"Finally, we support a persistent ratings dashboard where users can submit reviews. These are saved to a local database and dynamically update their profile in real-time."*
 
+---
 
-Pandas	                      Loading, cleaning, and manipulating the movie dataset.
+## 🧪 Model Performance & Similarity Metrics
 
-NumPy	                        Numerical computations for similarity matrix and indexing.
-
-NLTK	                        Natural Language Processing—tokenization, stemming, stopword removal.
-
-scikit-learn	                CountVectorizer to vectorize text, cosine_similarity to measure similarity.
-
-Matplotlib & Seaborn	        For data visualization (genre distribution, top movies, etc.).
-
-🧪 Example Use Case:
-
-If a user searches for "The Dark Knight", the system may recommend:
-
-Batman Begins
-
-The Prestige
-
-Inception
-
-Iron Man
-
-Avengers: Infinity War
-
-These are chosen not just because of genre, but due to the thematic and textual similarity in plot descriptions.
-
-📈 What Makes It Cool:
-
-It’s a pure content-based recommender, so it works even for new users (no cold start problem).
-
-No need for user behavior or past history—just the movie plot is enough.
-
-Easy to scale and modify (e.g., you can combine genres, directors, or keywords in future versions)
+* **Vectorization Model**: TF-IDF Vectorizer (L2 Normalization, sublinear TF scaling).
+* **Dimensionality**: Configured for the top `5,000` features to exclude low-frequency noise.
+* **Fuzzy Matching**: Levenshtein Distance (`difflib.get_close_matches`), threshold `0.6`.
