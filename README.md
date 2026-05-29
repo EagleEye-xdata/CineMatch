@@ -65,7 +65,7 @@ CineMatch is built as a highly modular, scalable, multi-page web application.
 ## 📂 Project Structure
 
 ```text
-Movie_Recommendation_System_Streamlit/
+CineMatch/
 ├── app.py                      # Main landing page & application entrypoint
 ├── requirements.txt            # Python dependencies
 ├── README.md                   # Comprehensive project documentation
@@ -108,8 +108,8 @@ Movie_Recommendation_System_Streamlit/
 
 1. **Clone your repository**:
    ```bash
-   git clone https://github.com/EagleEye-xdata/Movie_Recommendation_System_Streamlit.git
-   cd Movie_Recommendation_System_Streamlit
+   git clone https://github.com/EagleEye-xdata/CineMatch.git
+   cd CineMatch
    ```
 
 2. **Install all required dependencies**:
