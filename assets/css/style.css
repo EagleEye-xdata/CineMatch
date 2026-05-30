@@ -14,6 +14,10 @@ html, body {
   max-width: 1200px;
 }
 
+/* ==========================================
+   DEFAULT / DARK MODE STYLES
+   ========================================== */
+
 /* App Title & Subtitle Styling */
 .app-title {
   font-family: 'Plus Jakarta Sans', sans-serif !important;
@@ -54,6 +58,7 @@ h2 {
   font-size: 1.75rem !important;
   font-weight: 700 !important;
   margin-top: 2rem !important;
+  color: #f8fafc !important;
   letter-spacing: -0.019em !important;
 }
 
@@ -202,6 +207,97 @@ div[data-testid="stExpander"] {
   border-radius: 10px !important;
   background: rgba(30, 41, 59, 0.15) !important;
   margin-bottom: 0.5rem !important;
+}
+
+/* ==========================================
+   LIGHT MODE OVERRIDES
+   ========================================== */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+  }
+
+  /* App Title & Subtitle in Light Mode */
+  .app-title {
+    background: linear-gradient(135deg, #0f172a 40%, #334155 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: none !important;
+  }
+
+  .app-subtitle {
+    color: #475569 !important;
+  }
+
+  /* Main Headers in Light Mode */
+  h1 {
+    background: linear-gradient(135deg, #0f172a 40%, #334155 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  h2 {
+    color: #0f172a !important;
+  }
+
+  h3 {
+    color: #334155 !important;
+  }
+
+  /* Movie Card in Light Mode - Sleek Light Slate style */
+  .movie-card {
+    background: rgba(241, 245, 249, 0.75) !important;
+    border-color: rgba(148, 163, 184, 0.25) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .movie-card:hover {
+    border-color: rgba(148, 163, 184, 0.45) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .poster-fallback {
+    background: linear-gradient(145deg, #cbd5e1, #94a3b8) !important;
+    color: #0f172a !important;
+  }
+
+  .movie-title {
+    color: #0f172a !important;
+  }
+
+  .movie-meta {
+    color: #475569 !important;
+  }
+
+  .movie-overview {
+    color: #334155 !important;
+  }
+
+  .movie-footer {
+    color: #475569 !important;
+  }
+
+  .empty-state {
+    background: rgba(241, 245, 249, 0.5) !important;
+    border-color: rgba(148, 163, 184, 0.3) !important;
+    color: #475569 !important;
+  }
+
+  /* Premium Dashboard Metrics in Light Mode */
+  div[data-testid="metric-container"] {
+    background: rgba(241, 245, 249, 0.65) !important;
+    border-color: rgba(148, 163, 184, 0.22) !important;
+  }
+
+  div[data-testid="metric-container"]:hover {
+    border-color: rgba(148, 163, 184, 0.4) !important;
+  }
+
+  /* Expanders in Light Mode */
+  div[data-testid="stExpander"] {
+    border-color: rgba(148, 163, 184, 0.22) !important;
+    background: rgba(241, 245, 249, 0.5) !important;
+  }
 }
 
 /* Responsive Overrides */
