@@ -25,7 +25,9 @@ The goal of CineMatch is to solve the **cold-start problem** in recommender syst
   * Interactive breakdown of the most popular genres.
   * Dataset summary statistics.
 * 💾 **Persistent User Profiles & Ratings**: Rate movies directly in the app. Ratings are saved locally in a structured CSV file, dynamically updating your personalized recommended history.
-* 🎨 **Premium Aesthetic**: Responsive sidebar, custom glassmorphism design, custom CSS styles, and responsive cards with detailed popovers.
+* 🎨 **Premium Responsive Aesthetic**: Built with a sleek responsive sidebar, tactile glassmorphism elements, metrics outline cards, micro-animations, and full adaptive styling.
+* 🌓 **Seamless Multi-Theme (Light/Dark) Compatibility**: Refactored styling to use Streamlit's native CSS variables (`var(--text-color)`, `var(--secondary-background-color)`, and `var(--primary-color)`). Text gradients, card backgrounds, hover boundaries, and expander panels dynamically adapt to both Light and Dark modes in real-time, whether changed by the browser system or manually in the Streamlit Settings menu.
+* ✍️ **Modern Typography**: Styled using the elegant **Plus Jakarta Sans** typeface from Google Fonts for a clean, premium editorial look.
 
 ---
 
@@ -54,7 +56,7 @@ CineMatch is built as a highly modular, scalable, multi-page web application.
 ```
 
 * **Frontend**: [Streamlit](https://streamlit.io/) (Multi-page App Structure)
-* **Design & Styling**: Custom CSS stylesheets, Google Fonts (Outfit, Inter)
+* **Design & Styling**: Adaptive CSS Variable Stylesheet, Google Fonts (Plus Jakarta Sans)
 * **Natural Language Processing**: `TfidfVectorizer` (scikit-learn), text tokenization and metadata combination
 * **Similarity Computation**: `cosine_similarity` (scikit-learn), NumPy matrix operations
 * **Data Engineering**: Pandas, NumPy
@@ -91,7 +93,7 @@ CineMatch/
 │   └── 3_User_Ratings.py       # Dynamic rating system & personalized history
 ├── assets/                     # Frontend static assets
 │   ├── css/
-│   │   └── style.css           # Premium dark-theme & glassmorphism stylesheet
+│   │   └── style.css           # Premium adaptive multi-theme stylesheet
 │   └── placeholders/           # Static local placeholder assets
 └── data/
     └── user_ratings.csv        # Local DB storing persistent user ratings
