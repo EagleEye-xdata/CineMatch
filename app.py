@@ -9,7 +9,7 @@ from utils.helpers import load_css, movie_card
 
 
 st.set_page_config(
-    page_title="Movie Recommendation System",
+    page_title="CineMatch",
     page_icon="movie_camera",
     layout="wide",
 )
@@ -29,9 +29,9 @@ movies = cached_movies()
 engine = cached_engine(movies)
 load_css()
 
-st.markdown('<div class="app-title">Movie Recommendation System</div>', unsafe_allow_html=True)
+st.markdown('<div class="app-title">CineMatch</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="app-subtitle">Content-based movie discovery powered by your existing TF-IDF and cosine similarity workflow.</div>',
+    '<div class="app-subtitle">Find your next favorite movie with smart, personalized recommendations.</div>',
     unsafe_allow_html=True,
 )
 

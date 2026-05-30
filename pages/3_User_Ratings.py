@@ -7,7 +7,7 @@ from utils.helpers import load_css
 from utils.ratings_store import load_ratings, save_rating
 
 
-st.set_page_config(page_title="User Ratings", page_icon="star", layout="wide")
+st.set_page_config(page_title="CineMatch User Ratings", page_icon="star", layout="wide")
 
 
 @st.cache_data(show_spinner=False)

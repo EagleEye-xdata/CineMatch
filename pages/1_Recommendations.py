@@ -13,7 +13,7 @@ from utils.metrics import precision_at_k, recommendation_quality
 from utils.ratings_store import load_ratings
 
 
-st.set_page_config(page_title="Recommendations", page_icon="target", layout="wide")
+st.set_page_config(page_title="CineMatch Recommendations", page_icon="target", layout="wide")
 
 
 @st.cache_data(show_spinner=False)

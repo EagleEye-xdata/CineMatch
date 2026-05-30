@@ -1,4 +1,4 @@
-# Movie Recommendation System - Streamlit Setup
+# CineMatch - Streamlit Setup
 
 ## Project Structure
 

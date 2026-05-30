@@ -8,7 +8,7 @@ from utils.helpers import load_css
 from utils.metrics import dataset_stats
 
 
-st.set_page_config(page_title="Analytics", page_icon="bar_chart", layout="wide")
+st.set_page_config(page_title="CineMatch Analytics", page_icon="bar_chart", layout="wide")
 
 
 @st.cache_data(show_spinner=False)

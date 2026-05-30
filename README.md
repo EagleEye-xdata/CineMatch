@@ -1,10 +1,10 @@
-# 🎬 CineMatch: AI-Powered Movie Recommendation System
+# CineMatch
 
 [![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://python.org)
 [![Streamlit App](https://img.shields.io/badge/Streamlit-1.35%2B-FF4B4B.svg)](https://streamlit.io)
 [![ML Framework](https://img.shields.io/badge/Scikit--Learn-1.3%2B-F7931E.svg)](https://scikit-learn.org)
 
-An advanced, multi-page, content-based movie recommendation system built using Machine Learning and NLP. It processes textual metadata (genres, keywords, taglines, cast, directors) using TF-IDF vectorization and Cosine Similarity, offering a premium interactive web experience complete with real-time explainability, advanced analytics, and persistent user rating profiles.
+An advanced, multi-page, content-based movie discovery app built using Machine Learning and NLP. It processes textual metadata (genres, keywords, taglines, cast, directors) using TF-IDF vectorization and Cosine Similarity, offering a premium interactive web experience complete with real-time explainability, advanced analytics, and persistent user rating profiles.
 
 ---
 
@@ -132,7 +132,7 @@ CineMatch/
 To make submitting your project as easy as possible, use this structured script to record your **Loom Video**:
 
 ### Section 1: Self-Introduction (30 Seconds)
-> *"Hello, my name is [Your Name], and I am presenting **CineMatch**, an AI-powered content-based Movie Recommendation System. Today, I'll walk you through the problem statement, our machine learning approach, the technical architecture, and a live demonstration of the multi-page application."*
+> *"Hello, my name is [Your Name], and I am presenting **CineMatch**, an AI-powered content-based movie discovery app. Today, I'll walk you through the problem statement, our machine learning approach, the technical architecture, and a live demonstration of the multi-page application."*
 
 ### Section 2: Problem Statement & ML Methodology (1 Minute)
 > *"Standard recommendation engines face the cold-start problem where new users or fresh movies have no watch history to make collaborative recommendations. CineMatch solves this by using NLP.*
